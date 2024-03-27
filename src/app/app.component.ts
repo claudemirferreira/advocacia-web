@@ -30,8 +30,8 @@ export class AppComponent {
   title = 'material-responsive-sidenav';
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
-  isMobile = true;
-  isCollapsed = true;
+  isMobile = false;
+  isCollapsed = false;
 
   constructor(private observer: BreakpointObserver) {}
 
