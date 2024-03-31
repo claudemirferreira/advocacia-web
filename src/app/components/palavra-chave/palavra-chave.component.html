@@ -1,6 +1,6 @@
 <mat-card class="example-card">
   <mat-card-header>
-    <mat-card-title>Cadastro de Campos</mat-card-title>
+    <mat-card-title>Cadastro de Palavra Chave</mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <button
@@ -8,7 +8,7 @@
       color="primary"
       aria-label="incluir"
       title="incluir"
-      [routerLink]="['/cadastrar-campo']"
+      [routerLink]="['/cadastrar-palavra-chave']"
     >
       <mat-icon>add_circle</mat-icon>
     </button>
@@ -16,10 +16,10 @@
 
   <mat-card class="example-card">
     <mat-card-header>
-      <mat-card-title>Listagem de Campos</mat-card-title>
+      <mat-card-title>Listagem de Palavra Chave</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <table mat-table [dataSource]="campos" class="mat-elevation-z8">
+      <table mat-table [dataSource]="palavrasChave" class="mat-elevation-z8">
 
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef>Código</th>
@@ -39,7 +39,7 @@
               color="primary"
               aria-label="download"
               title="editar"
-              [routerLink]="['/cadastrar-campo', element.id]"
+              [routerLink]="['/cadastrar-palavra-chave', element.id]"
             >
               <mat-icon>edit</mat-icon>
             </button>

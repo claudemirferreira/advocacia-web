@@ -1,6 +1,6 @@
 <mat-card class="example-card" style="width: 100%">
   <mat-card-header>
-    <mat-card-title>Cadastro de Campo</mat-card-title>
+    <mat-card-title>Cadastro de Palavra Chave</mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <form [formGroup]="cadastroForm" (ngSubmit)="submitForm()">
@@ -9,7 +9,7 @@
         <input
           matInput
           formControlName="name"
-          [(ngModel)]="campo.name"
+          [(ngModel)]="palavraChave.name"
           required
         />
         <mat-error
@@ -24,7 +24,7 @@
       <mat-divider></mat-divider>
       <section>
         <div class="example-button-row">
-          <button mat-raised-button [routerLink]="['/campo']">Voltar</button>
+          <button mat-raised-button [routerLink]="['/palavra-chave']">Voltar</button>
           <button
             mat-flat-button
             color="primary"

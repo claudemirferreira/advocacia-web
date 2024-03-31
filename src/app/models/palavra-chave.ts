@@ -1,4 +1,4 @@
-export class Campo {
+export class PalavraChave {
   id!: number;
   name!: string;
 }

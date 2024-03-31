@@ -9,11 +9,11 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { CampoService } from '../../../services/campo.service';
-import { Campo } from '../../../models/campo';
+import { PalavraChaveService } from '../../../services/palavra-chave.service';
+import { PalavraChave } from '../../../models/palavra-chave';
 
 @Component({
-  selector: 'app-cadastrar-campo',
+  selector: 'app-cadastrar-palavra-chave',
   standalone: true,
   imports: [
     MatCardModule,
@@ -26,12 +26,12 @@ import { Campo } from '../../../models/campo';
     RouterModule,
 
   ],
-  templateUrl: './cadastrar-campo.component.html',
-  styleUrl: './cadastrar-campo.component.scss'
+  templateUrl: './cadastrar-palavra-chave.component.html',
+  styleUrl: './cadastrar-palavra-chave.component.scss'
 })
-export class CadastrarCampoComponent implements OnInit {
+export class CadastrarPalavraChaveComponent implements OnInit {
   cadastroForm!: FormGroup;
-  campo: Campo = {
+  palavraChave: PalavraChave = {
     name: '',
     id: 0
   };
@@ -39,7 +39,7 @@ export class CadastrarCampoComponent implements OnInit {
   id: number | undefined;
 
   constructor(private fb: FormBuilder,
-              private campoService: CampoService,
+              private palavraChaveService: PalavraChaveService,
               private route: ActivatedRoute,
               private router: Router) { }
 
@@ -63,11 +63,11 @@ export class CadastrarCampoComponent implements OnInit {
   }
 
   save(): void {
-    this.campoService.save(this.campo).subscribe(
+    this.palavraChaveService.save(this.palavraChave).subscribe(
       resposta => {
         // Manipule a resposta da API, se necessário
         console.log('Dados salvos com sucesso!', resposta);
-        this.router.navigate(['/campo'])
+        this.router.navigate(['/palavra-chave'])
       },
       error => {
         console.error('Erro ao salvar os dados:', error);
@@ -76,9 +76,9 @@ export class CadastrarCampoComponent implements OnInit {
   }
 
   findById(id: string): void {
-    this.campoService.findById(id).subscribe(
+    this.palavraChaveService.findById(id).subscribe(
       resposta => {
-        this.campo = resposta;
+        this.palavraChave = resposta;
         console.log('Dados salvos com sucesso!', resposta);
       },
       error => {
