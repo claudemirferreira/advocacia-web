@@ -1,0 +1,48 @@
+<mat-dialog-content class="mat-dialog-lg">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title
+        >Tela de Geração de Documento [{{ modelo.name }}]</mat-card-title
+      >
+      <mat-card-subtitle
+        >Informe os valores dos campos que deseja alterar e clique no botão
+        Gerar Documento</mat-card-subtitle
+      >
+    </mat-card-header>
+    <mat-card-content>
+      <div class="table-container">
+        <table mat-table [dataSource]="camposValor">
+          <!-- Definir colunas -->
+          <ng-container matColumnDef="nome">
+            <th mat-header-cell *matHeaderCellDef>Nome</th>
+            <td style="width: 25%" mat-cell *matCellDef="let element">
+              <mat-label>{{ element.nome }}</mat-label>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="valor">
+            <th mat-header-cell *matHeaderCellDef>Valor</th>
+            <td style="width: 75%" mat-cell *matCellDef="let element">
+              <input style="width: 90%" matInput [(ngModel)]="element.valor" />
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-divider></mat-divider>
+  <br />
+  <section>
+    <div class="example-button-row">
+      <button mat-flat-button mat-dialog-close>
+        Fechar
+      </button>
+      <button mat-flat-button color="primary" (click)="gerarDocumento()">
+        Gerar Documento
+      </button>
+    </div>
+  </section>
+</mat-dialog-content>
