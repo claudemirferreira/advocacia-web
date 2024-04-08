@@ -46,9 +46,9 @@ export class ModeloComponent {
       .subscribe((modelos) => (this.modelos = modelos));
   }
 
-  download(element: Event) {
+  download(id: number) {
     const fileName = 'nome_do_arquivo.docx';
-    this.modeloService.download().subscribe((blob) => {
+    this.modeloService.download(id).subscribe((blob) => {
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.style.display = 'none';
@@ -115,4 +115,5 @@ export class ModeloComponent {
       console.log('O modal foi fechado');
     });
   }
+  
 }

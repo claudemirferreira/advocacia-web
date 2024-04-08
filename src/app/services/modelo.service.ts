@@ -4,12 +4,13 @@ import { Observable } from 'rxjs';
 import { Modelo } from '../models/modelo';
 import { CampoValor } from '../models/campo-valor';
 import { ModeloDocumento } from '../models/modelo-documento';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ModeloService {
-  private apiUrl = 'http://localhost:8080/';
+  private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 
@@ -22,26 +23,25 @@ export class ModeloService {
   }
 
   save(modelo: Modelo): Observable<Modelo> {
-    return this.http.post<Modelo>(this.apiUrl + 'modelo/', modelo);
+    return this.http.post<Modelo>(this.apiUrl+'modelo/', modelo);
   }
 
   deleteById(id: number): Observable<any> {
-    return this.http.delete<any>(this.apiUrl + `modelo/${id}`);
+    return this.http.delete<any>(this.apiUrl + 'modelo/' + `${id}`);
   }
 
   findById(id: string): Observable<Modelo> {
     return this.http.get<Modelo>(this.apiUrl + 'modelo/' + id);
   }
 
-  download(): Observable<Blob> {
-    return this.http.get(`http://localhost:8080/modelo/1/download`, {
+  download(id: number): Observable<Blob> {
+    return this.http.get(this.apiUrl +`modelo/${id}/download`, {
       responseType: 'blob', // Define o tipo de resposta como Blob
     });
   }
 
   gerarDocumento(modeloDocumento: ModeloDocumento): Observable<Blob> {
-    return this.http.post(
-      `http://localhost:8080/modelo/campo-valor`,
+    return this.http.post( this.apiUrl + `modelo/campo-valor`,
       modeloDocumento,
       {
         responseType: 'blob', // Define o tipo de resposta como Blob

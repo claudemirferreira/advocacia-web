@@ -34,7 +34,7 @@
           <button mat-mini-fab color="primary" aria-label="editar" (click)="openModalUpload(element)">
             Upload
           </button>
-          <button mat-mini-fab color="primary" aria-label="download" (click)="download(element)">
+          <button mat-mini-fab color="primary" aria-label="download" (click)="download(element.id)">
             download
           </button>
           <button mat-mini-fab color="primary" aria-label="editar" [routerLink]="['/cadastrar-modelo', element.id]">
